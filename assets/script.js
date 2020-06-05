@@ -10,14 +10,15 @@ var tasks = {
 "4pm":"",
 "5pm":"",
 };
-
+// load saved tasks and run getTime function
 loadTasks();
 getTime();
+
+// function to get time and update the styles of the time blocks accordingly
 function getTime() {
     $("#currentDay").html(moment().format('dddd , MMMM Do YYYY'));
 
     var currentHour = moment().format('H');
-    console.log(currentHour);
     $('textarea').each(function () {
         var hourBlock = $(this).data("time");
         if (currentHour < hourBlock ) {
@@ -32,12 +33,7 @@ function getTime() {
     });
 };
 
-// push anything typed into the text areas to the tasks object in the correct key
-// $("textarea").on("focus", function(event){
-//     $(event.target).on("keypress", function(){
-//         tasks[event.target.id] = event.target.value;
-//     });
-// });
+// save anything entered into the text areas
 $(".saveBtn").on('click', function() {
     var time = $(this).prev('textarea').attr("id");
     var todo = $(this).prev('textarea').val();
@@ -56,11 +52,7 @@ function loadTasks() {
         }
     }
 };
+// auto refresh the time every minute so the styles stay up to date
 setInterval(function () {
     getTime();
 }, 60000);
-
-// determine current hour and assign it to variable
-// IF data-hour attrribute is less than current hour, add class "past" and remove present/future.
-// IF data hour attribute is equal to current hour, add class "present" and remove past/future.
-// IF data hour attribute is greater than current hour, add class "future" and remove past/present.
