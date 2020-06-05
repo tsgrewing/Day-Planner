@@ -56,7 +56,6 @@ function loadTasks() {
         }
     }
 };
-
 setInterval(function () {
     getTime();
 }, 60000);
