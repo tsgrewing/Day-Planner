@@ -17,7 +17,6 @@ getTime();
 // function to get time and update the styles of the time blocks accordingly
 function getTime() {
     $("#currentDay").html(moment().format('dddd , MMMM Do YYYY'));
-
     var currentHour = moment().format('H');
     $('textarea').each(function () {
         var hourBlock = $(this).data("time");
@@ -48,7 +47,6 @@ function loadTasks() {
         var textArea = $('textarea');
         for (var i=0;i < textArea.length;i++) {
             textArea[i].value = tasks[textArea[i].id];
-            
         }
     }
 };
